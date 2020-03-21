@@ -9,7 +9,7 @@
 </p>
 {% endif %}
 
-<from action="{% url 'polls:vote' question.id %}" method="post">
+<form action="{% url 'polls:vote' question.id %}" method="post">
     {% csrf_token %}
     {% for choice in question.choice_set.all %}
         <div class="from-check">
@@ -28,5 +28,5 @@
         value="Vote"
         class="btn btn-success btn-lg btn-black mt-4"
     />
-</from>
+</form>
 {% endblock %}

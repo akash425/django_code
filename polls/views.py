@@ -24,12 +24,11 @@ def detail(request, question_id):
 #Get Question and view results
 
 def results(request, question_id):
-    question = get_object_or_404(Question, question_id)
-    return render(request, 'polls/result.html', { 'question': question })
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/results.html', { 'question': question })
 
 # Vote for a question choice
 def vote(request, question_id):
-    # print(request.POST['choice])
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
